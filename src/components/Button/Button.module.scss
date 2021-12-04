@@ -1,0 +1,22 @@
+@import '../../assets/styles/variables';
+
+.btn {
+    padding: 15px 30px;
+    font-size: 16px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: $dark;
+    background-color: $white;
+}
+
+.primary {
+    @include btnColor;
+}
+
+.secondary {
+    @include btnColor($secondary);
+}
+
+.accent {
+    @include btnColor($accent);
+}

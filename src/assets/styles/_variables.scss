@@ -1,0 +1,19 @@
+$primary: slateblue;
+$secondary: tomato;
+$accent: slategray;
+$white: snow;
+$dark: #333;
+$danger: crimson;
+$success: limegreen;
+$warning: yellow;
+
+$shadow: 0 0 8px -2px $dark;
+
+@mixin btnColor($color: $primary, $textColor: $white) {
+    background-color: $color;
+    color: $textColor;
+
+    &:hover {
+        background-color: darken($color, 5%);
+    }
+}
