@@ -1,10 +1,14 @@
 import {useState} from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
 import Card from "../../components/Card";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import {registerAction} from '../../store/actionCreators';
 
 function Register() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -18,10 +22,8 @@ function Register() {
             password
         }
 
-        console.log(registerForm);
-        const response = await axios.post('http://localhost:1337/auth/local/register', registerForm)
-
-        console.log(response.data)
+        dispatch(registerAction(registerForm))
+        navigate('/');
     }
 
     return (

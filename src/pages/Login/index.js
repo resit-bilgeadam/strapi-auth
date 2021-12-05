@@ -1,11 +1,15 @@
 import { useState } from 'react';
-import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import Card from '../../components/Card';
+import {loginAction} from '../../store/actionCreators';
 import styles from './Login.module.scss';
 
 function Login() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [identifier, setIdentifier] = useState('');
     const [password, setPassword] = useState('');
 
@@ -17,9 +21,8 @@ function Login() {
             password
         }
 
-        console.log(loginForm);
-        const response = await axios.post('http://localhost:1337/auth/local', loginForm);
-        console.log(response.data);
+        dispatch(loginAction(loginForm))
+        navigate('/');
     }
 
     return (
